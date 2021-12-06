@@ -5,12 +5,12 @@
       :data="tableData"
       style="width: 100%">
     <el-table-column
-        prop="name"
+        prop="film_name"
         label="电影名"
         width="180">
     </el-table-column>
     <el-table-column
-        prop="post"
+        prop="poster"
         label="海报"
         width="180">
     </el-table-column>
@@ -19,11 +19,11 @@
         label="导演">
     </el-table-column>
     <el-table-column
-        prop="actor"
+        prop="main_Actor"
         label="主演">
     </el-table-column>
     <el-table-column
-        prop="date"
+        prop="release_date"
         label="发行日期">
     </el-table-column>
     <el-table-column
@@ -32,7 +32,7 @@
     </el-table-column>
     <!--电影名，海报，导演，主演，发行日期，简介，英文名，地区，类型，豆瓣排名，票房排名，imdb排名，豆瓣评分，评分人数，票房，imdb评分-->
     <el-table-column
-        prop="EnglishName"
+        prop="film_EngName"
         label="英文名">
     </el-table-column>
     <el-table-column
@@ -40,7 +40,7 @@
         label="地区">
     </el-table-column>
     <el-table-column
-        prop="style"
+        prop="film_style"
         label="类型">
     </el-table-column>
     <el-table-column
@@ -52,7 +52,7 @@
         label="票房排名">
     </el-table-column>
     <el-table-column
-        prop="rank_imdb"
+        prop="rank_income"
         label="imdb排名">
     </el-table-column>
     <el-table-column
@@ -64,7 +64,7 @@
         label="评分人数">
     </el-table-column>
     <el-table-column
-        prop="mon"
+        prop="income"
         label="票房">
     </el-table-column>
     <el-table-column

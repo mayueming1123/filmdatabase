@@ -1,9 +1,11 @@
 <!--列表元素为字典，包含名称，英文名，地区，类型，豆瓣评分，票房，imdb评分-->
 <template>
   <div>
-    <el-button type="warning" plain @click="changeRank(0)">豆瓣</el-button>
-    <el-button type="warning" plain @click="changeRank(1)">票房</el-button>
-    <el-button type="warning" plain @click="changeRank(2)">imdb</el-button>
+    <div class="buttons">
+      <el-button type="warning" plain @click="changeRank(0)">豆瓣</el-button>
+      <el-button type="warning" plain @click="changeRank(1)">票房</el-button>
+      <el-button type="warning" plain @click="changeRank(2)">imdb</el-button>
+    </div>
     <el-table
         :data="tableData"
         style="width: 100%">
@@ -86,3 +88,11 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+  .buttons {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+</style>
