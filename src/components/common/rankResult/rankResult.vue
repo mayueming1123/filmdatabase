@@ -2,20 +2,20 @@
 <template>
   <div>
     <div class="buttons">
-      <el-button type="warning" plain @click="changeRank(0)">豆瓣</el-button>
-      <el-button type="warning" plain @click="changeRank(1)">票房</el-button>
-      <el-button type="warning" plain @click="changeRank(2)">imdb</el-button>
+      <el-button type="warning" round @click="changeRank(0)">豆瓣</el-button>
+      <el-button type="warning" round @click="changeRank(1)">票房</el-button>
+      <el-button type="warning" round @click="changeRank(2)">imdb</el-button>
     </div>
-    <el-table
+    <div class="table">
+      <el-table
         :data="tableData"
         style="width: 100%">
       <el-table-column
-          prop="name"
-          label="电影名"
-          width="180">
+          prop="film_name"
+          label="电影名">
       </el-table-column>
       <el-table-column
-          prop="EnglishName"
+          prop="film_Engname"
           label="英文名">
       </el-table-column>
       <el-table-column
@@ -23,23 +23,23 @@
           label="地区">
       </el-table-column>
       <el-table-column
-          prop="style"
+          prop="film_type"
           label="类型">
       </el-table-column>
       <el-table-column v-if="isShow1"
-          prop="score_douban"
+          prop="douban_score"
           label="豆瓣评分">
       </el-table-column>
       <el-table-column v-if="isShow2"
-          prop="mon"
+          prop="film_Income"
           label="票房">
       </el-table-column>
       <el-table-column v-if="isShow3"
-          prop="score_imdb"
+          prop="imdb_score"
           label="imdb评分">
       </el-table-column>
     </el-table>
-
+    </div>
   </div>
 </template>
 
@@ -59,13 +59,17 @@ export default {
   },
   methods: {
     changeRank(t) {
+      this.tableData = [{
+        film_name: "加载中......"
+      }]
       if (t===0){
         this.isShow1 = 1
         this.isShow2 = 0
         this.isShow3 = 0
         this.type = 'douban'
         getRank(this.type).then(res => {
-            this.tableData = res;
+          console.log(res)
+          this.tableData = res.data.content;
           })
       }else if (t===1){
         this.isShow1 = 0
@@ -73,7 +77,8 @@ export default {
         this.isShow3 = 0
         this.type = 'income'
         getRank(this.type).then(res => {
-          this.tableData = res;
+          console.log(res)
+          this.tableData = res.data.content;
         })
       }else if (t===2){
         this.isShow1 = 0
@@ -81,7 +86,8 @@ export default {
         this.isShow3 = 1
         this.type = 'imdb'
         getRank(this.type).then(res => {
-          this.tableData = res;
+          console.log(res)
+          this.tableData = res.data.content;
         })
       }
     }
@@ -92,7 +98,18 @@ export default {
 
 <style scoped>
   .buttons {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 2%;
+    padding-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-bottom: #050505 solid 1px;
+  }
+  .el-button {
+    margin-right: 5%;
+  }
+  .table {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 </style>

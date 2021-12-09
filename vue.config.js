@@ -8,6 +8,11 @@ module.exports = {
                 'networks': '@/networks',
                 'views': '@/views',
             }
+        },
+        devServer: {
+
+            port: 8810, // 此处修改你想要的端口号
+
         }
     }
 }

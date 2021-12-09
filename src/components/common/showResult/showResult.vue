@@ -86,7 +86,8 @@ export default {
   created()
     {
       getHomeMultidata().then(res => {
-        this.tableData = res;
+        console.log(res);
+        this.tableData = res.data;
       })
     },
   props: ['tableData']

@@ -7,11 +7,11 @@
       </div>
       <h1 class="title">{{hello1}}</h1>
       <ul>
-        <li><input type="text" placeholder="用户名" id="user"></li>
-        <li><input type="password" placeholder="密码" id="psw"></li>
+        <li><input type="text" placeholder="用户名" id="user" v-model="username"></li>
+        <li><input type="password" placeholder="密码" id="psw" v-model="password"></li>
       </ul>
       <div class="btn3">
-        <a href="http://localhost:8081/home" class="btn" id="btn">{{login}}</a>
+        <a href="#" class="btn" id="btn" @click="confirm">{{login}}</a>
         <a href="#" class="right">{{register}}</a>
       </div>
     </div>
@@ -23,6 +23,8 @@
     name: "login",
     data() {
       return {
+        username: null,
+        password: null,
         isActive: true,
         hello1: '您好用户！ 欢迎登录电影数据库平台',
         login: '登录',
@@ -31,7 +33,6 @@
     },
     methods: {
         change1(){
-          console.log("click1")
           if (this.isActive === false){
             this.hello1 = '您好用户！ 欢迎登录电影数据库平台'
             this.isActive = !this.isActive
@@ -41,6 +42,16 @@
             this.isActive = !this.isActive
           }
         },
+        confirm(){
+          if ((this.isActive === true && this.username === 'user' && this.password === '123456')
+          ||(this.isActive === false && this.username === 'admin' && this.password === '1234567'))
+          {
+            this.$router.replace('/home')
+          }else
+          {
+            alert("用户名或密码错误")
+          }
+        }
       }
   }
 </script>
@@ -79,6 +90,7 @@
     height: 50px;
     margin-left: 60px;
     margin-top: 20px;
+    font-size: 23px;
   }
   a {
     text-decoration: none;

@@ -7,6 +7,7 @@ const Management = () => import('../views/management/Management')
 const Rank = () => import('../views/rank/Rank')
 const SearchByIndex = () => import('../views/searchByIndex/SearchByIndex')
 const Login = () => import('../views/login/Login')
+const Topbar = () => import('../views/topbar')
 
 
 Vue.use(VueRouter)
@@ -14,22 +15,33 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/home',
-        component:Home
+        path: '/',
+        redirect: '/login',
     },
     {
-        path: '/management',
-        component: Management
+        path: '/login',
+        component: Login,
     },
-    {
-        path: '/rank',
-        component: Rank
-    },
-    {
-        path: '/searchByIndex',
-        component: SearchByIndex
-    },
-
+    {   path: '/topbar',
+        component: Topbar,
+        children:[
+        {
+            path: '/home',
+            component: Home
+        },
+        {
+            path: '/management',
+            component: Management
+        },
+        {
+            path: '/rank',
+            component: Rank
+        },
+        {
+            path: '/searchByIndex',
+            component: SearchByIndex
+        },]
+},
 
 ]
 
